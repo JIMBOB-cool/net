@@ -41,18 +41,6 @@ The protocol uses the following structure:
 
 ---
 
-## Datagram Layout
-
-```text
-┌────────┬─────┬─────────┬─────────────┬───────────┬───────────┬──────────┬──────┐
-│ TYPE   │ SEQ │ NODE_ID│ CHUNK_TOTAL│ CHUNK_NUM│ DATA_SIZE│   DATA   │ HASH │
-├────────┼─────┼─────────┼─────────────┼───────────┼───────────┼──────────┼──────┤
-│ 1 byte │ 1 B │  2 B    │    4 B      │   4 B     │    4 B    │ Variable │ 32 B │
-└────────┴─────┴─────────┴─────────────┴───────────┴───────────┴──────────┴──────┘
-```
-
----
-
 ## Notes
 
 - The protocol supports **fragmented transmission** through `CHUNK_TOTAL` and `CHUNK_NUM`.
