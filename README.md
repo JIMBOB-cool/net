@@ -20,7 +20,7 @@ The protocol uses the following structure:
 +------+-----+---------+-------------+-----------+-----------+----------+------+
 | TYPE | SEQ | NODE_ID | CHUNK_TOTAL | CHUNK_NUM | DATA_SIZE |   DATA   | HASH |
 +------+-----+---------+-------------+-----------+-----------+----------+------+
-| 1 B  | 1 B |   2 B   |     4 B     |    4 B    |    4 B    | Variable | 32 B |
+| 1 B  | 4 B |   2 B   |     4 B     |    4 B    |    4 B    | Variable | 32 B |
 +------+-----+---------+-------------+-----------+-----------+----------+------+
 ```
 
@@ -31,7 +31,7 @@ The protocol uses the following structure:
 | Field | Size | Description |
 |:--|:--:|:--|
 | **TYPE** | 1 byte | Identifies the datagram type. Allows the receiver to interpret the `DATA` field correctly. Example values: `MATRIX`, `DATA`, `RESULT`, `ACK`, `NACK`, `FINISH`. |
-| **SEQ** | 1 byte | Datagram sequence number. Used to match packets with their corresponding `ACK` or `NACK`. |
+| **SEQ** | 4 byte | Datagram sequence number. Used to match packets with their corresponding `ACK` or `NACK`. |
 | **NODE_ID** | 2 bytes | Logical identifier of the node associated with the datagram. Example: `M0` for master node, `S1`, `S2`, `S3` for slave nodes. |
 | **CHUNK_TOTAL** | 4 bytes | Total number of chunks when the transmitted data is fragmented. |
 | **CHUNK_NUM** | 4 bytes | Current chunk index. Helps reconstruct fragmented data in the correct order. |
