@@ -40,6 +40,19 @@ The protocol uses the following structure:
 | **HASH** | 32 bytes | Integrity verification hash. The receiver recalculates the hash and compares it against this field to detect corruption. |
 
 ---
+Jacobson/ Karels Algorithm
+• Diff = sampleRTT - EstRTT 
+• EstRTT = EstRTT + ( d x Diff) 
+• Dev = Dev + d ( |Diff| - Dev)
+
+TimeOut = µ x EstRTT + φ x Dev – 
+where µ = 1 and φ = 4 
+
+TCP uses an initial value of 3 seconds [RFC2988],
+which is also RECOMMENDED as an initial value for UDP applications.
+SIP [RFC3261] and GIST [GIST] use an initial value of 500 ms, and
+initial timeouts that are shorter than this are likely problematic in
+many cases.[RFC5405] (https://www.rfc-editor.org/rfc/rfc5405?)
 
 ## Notes
 
